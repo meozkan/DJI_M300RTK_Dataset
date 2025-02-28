@@ -10,8 +10,8 @@
 
 
 // Signals
-// SIGINT -> Send to finish processes
-// SIGUSR1 -> Send to start recording the data by each process
+// SIGINT (2)-> Send to finish processes
+// SIGUSR1 (10)-> Send to start recording the data by each process
 
 int main(int argc, char* argv[]){ //Parent Process
 
@@ -25,9 +25,9 @@ int main(int argc, char* argv[]){ //Parent Process
     //------------------------------------------------------------------
     printf("-->DJI_M300RTK_Process will run...\n");
     if(!(PID_DJI_M300RTK_Process = fork())){
-        args[0] = "./DJI_M300RTK_Process";
+        args[0] = "/home/lattepanda/git/RIS_122E408_Project/DJI_Payload_SDK/build/bin/DJI_M300RTK_Process";
         args[1] = NULL;
-        if(-1==execv("./DJI_M300RTK_Process", args)){
+        if(-1==execv("/home/lattepanda/git/RIS_122E408_Project/DJI_Payload_SDK/build/bin/DJI_M300RTK_Process", args)){
             printf("-->EXEC ERROR: DJI_M300RTK_Process...\n");
             exit(0);
         }
@@ -39,15 +39,15 @@ int main(int argc, char* argv[]){ //Parent Process
     else{
         printf("-->ERROR: DJI_M300RTK_Process is not running...\n");
     }
-    sleep(1);
+    sleep(5);
     //------------------------------------------------------------------
 
     //------------------------------------------------------------------
     printf("-->Optitrack_Process will run...\n");
     if(!(PID_Optitrack_Process = fork())){
-        args[0] = "./Optitrack_Process";
+        args[0] = "/home/lattepanda/git/RIS_122E408_Project/Optitrack_NatNet_SDK_4_1_Ubuntu/samples/SampleClient/build/Optitrack_Process";
         args[1] = NULL;
-        if(-1==execv("./Optitrack_Process", args)){
+        if(-1==execv("/home/lattepanda/git/RIS_122E408_Project/Optitrack_NatNet_SDK_4_1_Ubuntu/samples/SampleClient/build/Optitrack_Process", args)){
             printf("-->EXEC ERROR: Optitrack_Process...\n");
             exit(0);
         }
@@ -58,15 +58,15 @@ int main(int argc, char* argv[]){ //Parent Process
     else{
         printf("-->ERROR: Optitrack_Process is not running...\n");
     }
-    sleep(1);
+    sleep(5);
     //------------------------------------------------------------------
 
     //------------------------------------------------------------------
     printf("-->SickVisionaryTMini_Process will run...\n");
     if(!(PID_SickVisionaryTMini_Process = fork())){
-        args[0] = "./SickVisionaryTMini_Process";
+        args[0] = "/home/lattepanda/git/RIS_122E408_Project/SickVisionarySamples/build/122E408/SickVisionaryTMini_Process";
         args[1] = NULL;      
-        if(-1==execv("./SickVisionaryTMini_Process", args)){
+        if(-1==execv("/home/lattepanda/git/RIS_122E408_Project/SickVisionarySamples/build/122E408/SickVisionaryTMini_Process", args)){
             printf("-->EXEC ERROR: Optitrack_Process...\n");
             exit(0);
         }
@@ -77,7 +77,7 @@ int main(int argc, char* argv[]){ //Parent Process
     else{
         printf("-->ERROR: SickVisionaryTMini_Process is not running...\n");
     }
-    sleep(1);
+    sleep(5);
     //------------------------------------------------------------------
 
     while(ch!='s'){

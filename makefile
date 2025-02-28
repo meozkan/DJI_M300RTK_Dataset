@@ -1,5 +1,5 @@
 include=-I../../include
-libpath=-L../../lib
+libpath=-L/home/lattepanda/git/RIS_122E408_Project/Optitrack_NatNet_SDK_4_1_Ubuntu/lib/
 libs=#-l
 
 all:build/DJI_M300RTK_Dataset_Coordinator
